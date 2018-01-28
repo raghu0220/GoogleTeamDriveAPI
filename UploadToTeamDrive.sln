@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadToTeamDrive", "UploadToTeamDrive\UploadToTeamDrive.csproj", "{1BF45EBA-D92E-456F-A05F-7F6EBA16BCAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BF45EBA-D92E-456F-A05F-7F6EBA16BCAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF45EBA-D92E-456F-A05F-7F6EBA16BCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF45EBA-D92E-456F-A05F-7F6EBA16BCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF45EBA-D92E-456F-A05F-7F6EBA16BCAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF34FFEB-B467-4866-8BBD-0DC306C41287}
+	EndGlobalSection
+EndGlobal
