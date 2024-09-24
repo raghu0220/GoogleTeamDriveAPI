@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test build
-        run: ls -ltr
+        run: ls -al
