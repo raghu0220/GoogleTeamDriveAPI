@@ -4,7 +4,5 @@ jobs:
   build-code:
     runs-on: ubuntu-latest
     steps:
-      - name: print greeting
-        run: echo "hello world"
-      - name: print good bye
-        run: echo "good bye"
+      - name: test build
+        run: ls -ltr
