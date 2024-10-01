@@ -23,8 +23,8 @@ jobs:
         env:
             UNAME: ${{ secrets.TEST_UNAME }}
             UPASS: ${{ secrets.TEST_UPASS }}
-            BNAME: ${{ env.BRANCH_NAME }}
             
         run: |
-            echo "uname = ${UNAME}, upass = ${UPASS} Branch = ${BNAME}"
+            echo "uname = ${UNAME}, upass = ${UPASS}"
+            echo "${GITHUB_REF#refs/heads/}"
       
