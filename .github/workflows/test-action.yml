@@ -18,10 +18,7 @@ jobs:
       #      sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
       #      java -version
       #      echo "installed latest java version"
-      
-      - name: read pom file
-        
-            
+                  
       - name: create properties
         env:
             UNAME: ${{ secrets.TEST_UNAME }}
@@ -32,5 +29,5 @@ jobs:
             echo "uname = ${UNAME}, upass = ${UPASS} and Branch = ${GITHUB_BRANCH}"
       
       - name: Print Maven POM project version
-        run: 
+        run: |
             echo "version = ${{ steps.pom-version.outputs.version }}"
