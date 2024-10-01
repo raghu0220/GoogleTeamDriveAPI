@@ -28,6 +28,9 @@ jobs:
         run: |
             echo "uname = ${UNAME}, upass = ${UPASS} and Branch = ${GITHUB_BRANCH}"
       
-      - name: Print Maven POM project version
-        run: |
-            echo "version = ${{ steps.pom-version.outputs.version }}"
+      - name: Get Version
+        uses: ./
+        id: getVersion
+      
+      - name: Print the version
+        run: echo "The version we just got is ${{ steps.getVersion.outputs.version }}"
