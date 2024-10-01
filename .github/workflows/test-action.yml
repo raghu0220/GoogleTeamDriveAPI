@@ -21,8 +21,9 @@ jobs:
             
       - name: create properties
         env:
-            UNAME: ${{ secrets.test_uname }}
-            UPASS: ${{ secrets.test_pass }}
+            UNAME: ${{ secrets.TEST_UNAME }}
+            UPASS: ${{ secrets.TEST_UPASS }}
             
         run: |
             echo "uname = ${UNAME} and upass = ${UPASS}"
+      
