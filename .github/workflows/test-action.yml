@@ -11,10 +11,18 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v3
         
-      - name: install OpenJDK 17
+      #- name: install OpenJDK 17
+      #  run: |
+      #      sudo apt-get update && sudo apt-get install openjdk-17-jdk
+      #      sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+      #      sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+      #      java -version
+      #      echo "installed latest java version"
+            
+      - name: create properties
+        env:
+            UNAME: ${{ secrets.test_uname }}
+            UPASS: ${{ secrets.test_pass }}
+            
         run: |
-            sudo apt-get update && sudo apt-get install openjdk-17-jdk
-            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
-            java -version
-            echo "installed latest java version"
+            echo "uname = ${UNAME} and upass = ${UPASS}"
