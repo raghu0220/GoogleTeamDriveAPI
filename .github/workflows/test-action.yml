@@ -53,8 +53,8 @@ jobs:
             APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
         if: ('${GITHUB_BRANCH}' != 'release')
         run: |
-            echo "uname = ${UNAME} ${upper${GITHUB_BRANCH}}"
-            echo "upass = ${UPASS} ${upper${GITHUB_BRANCH}}"
-            echo "Branch = ${GITHUB_BRANCH} ${upper${GITHUB_BRANCH}}"
-            echo "APP_Name = ${APPLICATION_NAME} ${upper${GITHUB_BRANCH}}"
-            echo "APP_version = ${APPLICATION_VERSION} ${upper${GITHUB_BRANCH}}"
+            echo "uname = ${UNAME} ${upper(${GITHUB_BRANCH})}"
+            echo "upass = ${UPASS} ${upper(${GITHUB_BRANCH})}"
+            echo "Branch = ${GITHUB_BRANCH} ${upper(${GITHUB_BRANCH})}"
+            echo "APP_Name = ${APPLICATION_NAME} ${upper(${GITHUB_BRANCH})}"
+            echo "APP_version = ${APPLICATION_VERSION} ${upper(${GITHUB_BRANCH})}"
