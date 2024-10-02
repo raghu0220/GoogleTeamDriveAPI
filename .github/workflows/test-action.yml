@@ -29,17 +29,38 @@ jobs:
         id: getartifactId
 
       
-      - name: create properties
+      - name: set properties
         env:
             UNAME: ${{ secrets.TEST_UNAME }}
             UPASS: ${{ secrets.TEST_UPASS }}
             GITHUB_BRANCH: ${{ github.ref_name }}
             APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
             APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
+            
+      - name: Deploy to DEV
+        if: (${GITHUB_BRANCH} == dev)
         run: |
-            echo "uname = ${UNAME}"
-            echo "upass = ${UPASS}"
-            echo "Branch = ${GITHUB_BRANCH}"
-            echo "APP_Name = ${APPLICATION_NAME}"
-            echo "APP_version = ${APPLICATION_VERSION}"
+            echo "uname = ${UNAME} dev"
+            echo "upass = ${UPASS} dev"
+            echo "Branch = ${GITHUB_BRANCH} dev"
+            echo "APP_Name = ${APPLICATION_NAME} dev"
+            echo "APP_version = ${APPLICATION_VERSION} dev"
+      
+      - name: Deploy to QA
+        if: (${GITHUB_BRANCH} == qa)
+        run: |
+            echo "uname = ${UNAME} qa"
+            echo "upass = ${UPASS} qa"
+            echo "Branch = ${GITHUB_BRANCH} qa"
+            echo "APP_Name = ${APPLICATION_NAME} qa"
+            echo "APP_version = ${APPLICATION_VERSION} qa"
+            
+      - name: Deploy to PROD
+        if: (${GITHUB_BRANCH} == PROD)
+        run: |
+            echo "uname = ${UNAME} PROD"
+            echo "upass = ${UPASS} PROD"
+            echo "Branch = ${GITHUB_BRANCH} PROD"
+            echo "APP_Name = ${APPLICATION_NAME} PROD"
+            echo "APP_version = ${APPLICATION_VERSION} PROD"
             
