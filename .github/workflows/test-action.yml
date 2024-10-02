@@ -26,7 +26,7 @@ jobs:
       
       - name: Extract Maven project version
         run: echo ::set-output name=artifactId::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.artifactId}' --non-recursive exec:exec)
-        id: appname
+        id: getartifactId
 
       
       - name: create properties
@@ -34,12 +34,12 @@ jobs:
             UNAME: ${{ secrets.TEST_UNAME }}
             UPASS: ${{ secrets.TEST_UPASS }}
             GITHUB_BRANCH: ${{ github.ref_name }}
-            APPLICATION_NAME: ${{ steps.appname.outputs.version }}
+            APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
             APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
         run: |
             echo "uname = ${UNAME}"
             echo "upass = ${UPASS}"
             echo "Branch = ${GITHUB_BRANCH}"
-            echo "APP Name = ${APPLICATION_NAME}"
+            echo "APP_Name = ${APPLICATION_NAME}"
             echo "APP_version = ${APPLICATION_VERSION}"
             
