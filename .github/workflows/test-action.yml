@@ -28,8 +28,5 @@ jobs:
         run: |
             echo "uname = ${UNAME}, upass = ${UPASS} and Branch = ${GITHUB_BRANCH}"
       
-      - name: Get Version
-        id: getVersion
-      
       - name: Print the version
         run: echo "The version we just got is ${{ steps.getVersion.outputs.version }}"
