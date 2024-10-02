@@ -29,7 +29,6 @@ jobs:
             echo "uname = ${UNAME}, upass = ${UPASS} and Branch = ${GITHUB_BRANCH}"
       
       - name: Get Version
-        uses: ./
         id: getVersion
       
       - name: Print the version
