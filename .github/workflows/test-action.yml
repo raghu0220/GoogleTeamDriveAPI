@@ -1,6 +1,5 @@
 name: build mule project
 on: workflow_dispatch
-branches: [dev, sit uat, ]
 jobs:
   build-code:
     runs-on: ubuntu-24.04
