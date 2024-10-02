@@ -35,7 +35,7 @@ jobs:
             UPASS: ${{ secrets.TEST_UPASS }}
             GITHUB_BRANCH: ${{ github.ref_name }}
             APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
-        if: "${GITHUB_BRANCH} == 'dev'"
+        if: ${{ github.ref_name == 'dev' }}
         run: |
             echo "uname = ${UNAME} deploying to ${GITHUB_BRANCH}"
             echo "upass = ${UPASS} deploying to ${GITHUB_BRANCH}"
@@ -50,7 +50,7 @@ jobs:
             GITHUB_BRANCH: ${{ github.ref_name }}
             APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
             APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
-        if: "${GITHUB_BRANCH} == 'sit'"
+        if: ${{ github.ref_name == 'sit' }}
         run: |
             echo "uname = ${UNAME} deploying to ${GITHUB_BRANCH}"
             echo "upass = ${UPASS} deploying to ${GITHUB_BRANCH}"
@@ -65,7 +65,7 @@ jobs:
             GITHUB_BRANCH: ${{ github.ref_name }}
             APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
             APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
-        if: "${GITHUB_BRANCH} == 'uat'"
+        if: ${{ github.ref_name == 'uat' }}
         run: |
             echo "uname = ${UNAME} deploying to ${GITHUB_BRANCH}"
             echo "upass = ${UPASS} deploying to ${GITHUB_BRANCH}"
