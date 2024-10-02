@@ -19,18 +19,27 @@ jobs:
       #      java -version
       #      echo "installed latest java version"
                   
+      
+      - name: Extract Maven project version
+        run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+        id: getversion
+      
+      - name: Extract Maven project version
+        run: echo ::set-output name=artifactId::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.artifactId}' --non-recursive exec:exec)
+        id: appname
+
+      
       - name: create properties
         env:
             UNAME: ${{ secrets.TEST_UNAME }}
             UPASS: ${{ secrets.TEST_UPASS }}
             GITHUB_BRANCH: ${{ github.ref_name }}
-            
+            APPLICATION_NAME: ${{ steps.appname.outputs.version }}
+            APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
         run: |
-            echo "uname = ${UNAME}, upass = ${UPASS} and Branch = ${GITHUB_BRANCH}"
-      
-      - name: Extract Maven project version
-        run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-        id: getversion
-
-      - name: Show extracted Maven project version
-        run: echo ${{ steps.getversion.outputs.version }}
+            echo "uname = ${UNAME}"
+            echo "upass = ${UPASS}"
+            echo "Branch = ${GITHUB_BRANCH}"
+            echo "APP Name = ${APPLICATION_NAME}"
+            echo "APP_version = ${APPLICATION_VERSION}"
+            
