@@ -1,5 +1,6 @@
 name: build mule project
 on: workflow_dispatch
+branches: [dev, sit uat, ]
 jobs:
   build-code:
     runs-on: ubuntu-24.04
@@ -29,33 +30,46 @@ jobs:
         id: getartifactId
 
       
-      - name: Deploy to PROD
+      - name: Deploy to dev
         env:
             UNAME: ${{ secrets.TEST_UNAME }}
             UPASS: ${{ secrets.TEST_UPASS }}
             GITHUB_BRANCH: ${{ github.ref_name }}
             APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
-            APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
-        if: ('${GITHUB_BRANCH}' == 'release')
+        if: ('${GITHUB_BRANCH}' == 'dev')
         run: |
-            echo "uname = ${UNAME} release"
-            echo "upass = ${UPASS} release"
-            echo "Branch = ${GITHUB_BRANCH} release"
-            echo "APP_Name = ${APPLICATION_NAME} release"
-            echo "APP_version = ${APPLICATION_VERSION} release"
+            echo "uname = ${UNAME} deploying to ${GITHUB_BRANCH}"
+            echo "upass = ${UPASS} deploying to ${GITHUB_BRANCH}"
+            echo "Branch = ${GITHUB_BRANCH} deploying to ${GITHUB_BRANCH}"
+            echo "APP_Name = ${APPLICATION_NAME} deploying to ${GITHUB_BRANCH}"
+            echo "APP_version = ${APPLICATION_VERSION} deploying to ${GITHUB_BRANCH}"
       
-      - name: Deploy to nonprod
+      - name: Deploy to sit
         env:
             UNAME: ${{ secrets.TEST_UNAME }}
             UPASS: ${{ secrets.TEST_UPASS }}
             GITHUB_BRANCH: ${{ github.ref_name }}
             APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
             APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
-            MULE_ENV_NAME: ${upper(${{ github.ref_name }})}
-        if: ('${GITHUB_BRANCH}' != 'release')
+        if: ('${GITHUB_BRANCH}' == 'sit')
         run: |
-            echo "uname = ${UNAME} ${MULE_ENV_NAME}"
-            echo "upass = ${UPASS} ${MULE_ENV_NAME}"
-            echo "Branch = ${GITHUB_BRANCH} ${MULE_ENV_NAME}"
-            echo "APP_Name = ${APPLICATION_NAME} ${MULE_ENV_NAME}"
-            echo "APP_version = ${APPLICATION_VERSION} ${MULE_ENV_NAME}"
+            echo "uname = ${UNAME} deploying to ${GITHUB_BRANCH}"
+            echo "upass = ${UPASS} deploying to ${GITHUB_BRANCH}"
+            echo "Branch = ${GITHUB_BRANCH} deploying to ${GITHUB_BRANCH}"
+            echo "APP_Name = ${APPLICATION_NAME} deploying to ${GITHUB_BRANCH}"
+            echo "APP_version = ${APPLICATION_VERSION} deploying to ${GITHUB_BRANCH}"
+            
+      - name: Deploy to uat
+        env:
+            UNAME: ${{ secrets.TEST_UNAME }}
+            UPASS: ${{ secrets.TEST_UPASS }}
+            GITHUB_BRANCH: ${{ github.ref_name }}
+            APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
+            APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
+        if: ('${GITHUB_BRANCH}' == 'uat')
+        run: |
+            echo "uname = ${UNAME} deploying to ${GITHUB_BRANCH}"
+            echo "upass = ${UPASS} deploying to ${GITHUB_BRANCH}"
+            echo "Branch = ${GITHUB_BRANCH} deploying to ${GITHUB_BRANCH}"
+            echo "APP_Name = ${APPLICATION_NAME} deploying to ${GITHUB_BRANCH}"
+            echo "APP_version = ${APPLICATION_VERSION} deploying to ${GITHUB_BRANCH}"
