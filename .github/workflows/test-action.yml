@@ -36,21 +36,21 @@ jobs:
             GITHUB_BRANCH: ${{ github.ref_name }}
             APPLICATION_NAME: ${{ steps.getartifactId.outputs.artifactId }}
             APPLICATION_VERSION: ${{ steps.getversion.outputs.version }}
-        if: (${GITHUB_BRANCH} == dev)
+        if: ('${GITHUB_BRANCH}' == 'dev')
         run: |
             echo "uname = ${UNAME} dev"
             echo "upass = ${UPASS} dev"
             echo "Branch = ${GITHUB_BRANCH} dev"
             echo "APP_Name = ${APPLICATION_NAME} dev"
             echo "APP_version = ${APPLICATION_VERSION} dev"
-        elseif: (${GITHUB_BRANCH} == qa)
+        elseif: ('${GITHUB_BRANCH}' == 'qa')
         run: |
             echo "uname = ${UNAME} qa"
             echo "upass = ${UPASS} qa"
             echo "Branch = ${GITHUB_BRANCH} qa"
             echo "APP_Name = ${APPLICATION_NAME} qa"
             echo "APP_version = ${APPLICATION_VERSION} qa"
-        elseif: (${GITHUB_BRANCH} == PROD)
+        elseif: ('${GITHUB_BRANCH}' == 'PROD')
         run: |
             echo "uname = ${UNAME} PROD"
             echo "upass = ${UPASS} PROD"
